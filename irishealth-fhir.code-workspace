@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"name": "main",
+			"path": ".",
+			"objectscript.conn.active": false
+		},
+		{
+			"name": "fhir",
+			"path": "code"
+		},
+		{
+			"name": "iris:FHIR (read-only)",
+			"uri": "isfs-readonly://iris:fhir/"
+		}
+	],
+	"settings": {
+		"objectscript.conn": {
+			"active": false
+		},
+		"intersystems.servers": {
+			"iris": {
+				"webServer": {
+					"scheme": "http",
+					"host": "localhost",
+					"port": 9092
+				},
+				"description": "FHIR",
+				"username": "superuser",
+				"password": "SYS"
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  iris-fhir:
+    image: store/intersystems/irishealth-community:iris-fhir
+    init: true
+    build:
+      context: .
+    hostname: iris-fhir
+    container_name: iris-fhir
+    ports:
+    - "9091:1972"
+    - "9092:52773"    
+    volumes:
+    - type: bind
+      source: ./code
+      target: /code
+    - type: bind
+      source: ./shared
+      target: /shared
