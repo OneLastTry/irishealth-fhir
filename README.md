@@ -61,4 +61,4 @@ docker-compose stop
 
 To validate your container simply run `curl http://localhost:9092/demo/fhir/r4/metadata` from your terminal or access the URL from the browser or applications like Postman.
 
-A [Postman project](/blob/master/IRIS-FHIR.postman_collection.json) is provided with a couple of sample calls.
+A [Postman project](/IRIS-FHIR.postman_collection.json) is provided with a couple of sample calls.
