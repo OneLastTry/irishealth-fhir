@@ -1,6 +1,6 @@
 Include %occInclude
 
-Class Demo.Installer
+Class HS.Local.Demo.Installer
 {
 
 Parameter NAMESPACE As STRING = "FHIR";
@@ -9,7 +9,7 @@ XData Install [ XMLNamespace = INSTALLER ]
 {
 <Manifest>
     <Log Text="UnExpire Passwords..." Level="0"/>
-	<Invoke Class="Demo.Installer" Method="UnExpireUserPasswords" CheckStatus="true">
+	<Invoke Class="HS.Local.Demo.Installer" Method="UnExpireUserPasswords" CheckStatus="true">
 	</Invoke>
     <Log Text="Creating ${NAMESPACE} namespace and DB..." Level="0"/>
     <Default Name="RESOURCE" Value="%DB_${NAMESPACE}" />
@@ -27,7 +27,7 @@ XData Install [ XMLNamespace = INSTALLER ]
             <Import File="${SOURCE}" Recurse="true"/>
         </IfDef>
         <Log Text="Install FHIR..." Level="0"/>
-        <Invoke Class="Demo.Installer" Method="InstallFHIR" CheckStatus="true">
+        <Invoke Class="HS.Local.Demo.Installer" Method="InstallFHIR" CheckStatus="true">
         </Invoke>
     </Namespace>
 </Manifest>
@@ -77,6 +77,7 @@ ClassMethod InstallFHIR() As %Status
 {
     set sc = $$$OK
     try {
+        set $namespace = "HSLIB"
         set appKey = "/demo/fhir/r4"
         set strategyClass = "HS.FHIRServer.Storage.Json.InteractionsStrategy"
         set metadataConfigKey = "HL7v40"

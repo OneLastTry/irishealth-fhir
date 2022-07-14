@@ -2,7 +2,7 @@
 
 Basic setup of FHIR server using InterSystems IRIS for Health.
 
-**Version:** _store/intersystems/irishealth-community:2021.1.0.205.0_
+**Version:** _containers.intersystems.com/intersystems/irishealth-community:2022.2.0.281.0_
 
 **Make sure you have Docker up and running before starting.**
 

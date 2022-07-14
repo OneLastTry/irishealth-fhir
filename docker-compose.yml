@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   iris-fhir:
-    image: irishealth-community/fhir:base
+    image: intersystems/demo/irishealth/fhir:latest
     init: true
     build:
       context: .

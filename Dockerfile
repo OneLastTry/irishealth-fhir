@@ -1,8 +1,7 @@
-ARG IMAGE=store/intersystems/irishealth-community:2021.1.0.215.3
+ARG IMAGE=containers.intersystems.com/intersystems/irishealth-community:2022.2.0.281.0
 FROM $IMAGE AS I4HBuilder
 LABEL maintainer="Renan Lourenco <renan.lourenco@intersystems.com>"
 
-USER ${ISC_PACKAGE_MGRUSER}
 ENV IRIS_PASSWORD="SYS"
 ENV IRIS_INSTALLER="/tmp/Installer.cls"
 
@@ -20,12 +19,14 @@ SHELL ["/tmp/scripts/build.sh"]
 
 # Install custom code
 RUN \
-  zn "HSLIB" \
-  set sc = $SYSTEM.OBJ.Load("/tmp/src/Demo/Installer.cls","ck") \
-  if sc do ##class(Demo.Installer).Install("/tmp/src/Demo")
+  zn "HSCUSTOM" \
+  set sc = $SYSTEM.OBJ.Load("/tmp/src/HS/Local/Demo/Installer.cls","ck") \
+  if sc do ##class(HS.Local.Demo.Installer).Install("/tmp/src/HS")
 SHELL ["/bin/bash", "-c"]
 
 RUN echo "$IRIS_PASSWORD" >> /tmp/pwd.isc && /usr/irissys/dev/Container/changePassword.sh /tmp/pwd.isc
+
+USER ${ISC_PACKAGE_MGRUSER}
 
 # 2nd stage to reduce size
 FROM $IMAGE AS I4HDemo
@@ -49,3 +50,5 @@ RUN \
   && chmod -R 775 /usr/irissys/mgr/fhir/IRIS.DAT \
   && chmod -R 660 /usr/irissys/mgr/FHIRX0001R/IRIS.DAT \
   && chmod -R 660 /usr/irissys/mgr/FHIRX0001V/IRIS.DAT
+
+USER ${ISC_PACKAGE_MGRUSER}
