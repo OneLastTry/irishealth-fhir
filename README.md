@@ -8,19 +8,16 @@ Basic setup of FHIR server using InterSystems IRIS for Health.
 
 ## Setup
 
-Clone the repository to your desired directory
+**Make sure you have Docker up and running before starting.**
 
-```bash
-git clone https://github.com/OneLastTry/irishealth-fhir.git
-```
+Clone the repo `git clone https://github.com/OneLastTry/irishealth-fhir.git` and then execute from the main directory `docker-compose build`.
+_(for arm64 run `docker-compose --env-file=.env-arm64 build`)_
 
-Once the repository is cloned, execute:
+## Execution
 
-**Always make sure you are inside the main directory to execute docker-compose commands.**
+Once the build is complete, from the main directory, start your iris container:
 
-```bash
-docker-compose build
-```
+- **start container:** `docker-compose up -d`
 
 ## Run your Container
 
