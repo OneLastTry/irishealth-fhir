@@ -8,10 +8,6 @@
 		{
 			"name": "fhir",
 			"path": "code"
-		},
-		{
-			"name": "iris:FHIR (read-only)",
-			"uri": "isfs-readonly://iris:fhir/"
 		}
 	],
 	"settings": {
